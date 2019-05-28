@@ -1,0 +1,49 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+// debug
+apply plugin: 'application'
+applicationDefaultJvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"]
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+//bootJar {
+//    with copySpec {
+//        from "$buildDir/classes/java/main/com/example/fileitemreader"
+//        into 'com/example/fileitemreader'
+//    }
+//}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-batch'
+//    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+//    implementation 'mysql:mysql-connector-java'
+    //'com.microsoft.sqlserver', name: 'mssql-jdbc'
+    implementation 'com.microsoft.sqlserver:mssql-jdbc:6.2.2.jre8'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1'
+    // 通用mapper插件
+    implementation('tk.mybatis:mapper-spring-boot-starter:2.0.1')
+    // redis
+    implementation('org.springframework.boot:spring-boot-starter-data-redis')
+    implementation 'org.apache.commons:commons-lang3:3.9'
+    implementation 'org.apache.poi:poi-ooxml:4.1.0'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.batch:spring-batch-test'
+}

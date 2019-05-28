@@ -1,0 +1,22 @@
+package com.example.testbatchprocessing.mapper;
+
+import com.example.testbatchprocessing.pojo.People;
+import org.springframework.batch.item.file.mapping.FieldSetMapper;
+import org.springframework.batch.item.file.transform.FieldSet;
+import org.springframework.validation.BindException;
+
+/**
+ * @file: PeopleMessageMapper.class
+ * @author: Dusk
+ * @since: 2019/5/11 17:39
+ * @desc:
+ */
+public class PeopleMessageMapper implements FieldSetMapper<People> {
+    @Override
+    public People mapFieldSet(FieldSet fieldSet) throws BindException {
+        return new People(fieldSet.readString("name")
+                , fieldSet.readInt("age")
+                , fieldSet.readString("school")
+                , fieldSet.readLong("wealth"));
+    }
+}

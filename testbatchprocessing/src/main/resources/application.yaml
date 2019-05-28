@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    username: root
+    password: 1997050812345Xr
+    url: jdbc:mysql:///chapter?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    schema: classpath:/org/springframework/batch/core/schema-mysql.sql
+  batch:
+    initialize-schema: always
+    job:
+      enabled: false
